@@ -196,7 +196,6 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
         }
-        
 
         .subject-card {
             background: white;
@@ -915,9 +914,6 @@
 
     <!-- Subjects Section -->
     <section class="subjects" id="subjects">
-        <div style="text-align:center; margin-top:30px;">
-    <button id="downloadSyllabusBtn" class="btn" style="display:none; background: var(--primary); color: white; padding: 12px 30px;">Download Syllabus PDF</button>
-</div>
         <div class="container">
             <h2 class="section-title">Subjects We Cover</h2>
             <div class="subjects-grid">
@@ -1522,62 +1518,6 @@
             // In a real implementation, this would generate a shareable link
             alert('Whiteboard shared! Copy this link to share with others: ' + window.location.href + '?whiteboard=' + encodeURIComponent(whiteboardData));
         });
-        // Syllabus data for each subject
-const syllabusData = {
-    "Physics": [
-        "1. Force, Work, Energy and Power",
-        "2. Light",
-        "3. Sound",
-        "4. Electricity and Magnetism",
-        "5. Heat",
-        "6. Modern Physics"
-    ],
-    "Chemistry": [
-        "1. Periodic Table",
-        "2. Chemical Bonding",
-        "3. Acids, Bases and Salts",
-        "4. Analytical Chemistry",
-        "5. Mole Concept and Stoichiometry",
-        "6. Electrolysis"
-    ],
-    "Mathematics": [
-        "1. Commercial Mathematics",
-        "2. Algebra",
-        "3. Geometry",
-        "4. Mensuration",
-        "5. Trigonometry",
-        "6. Statistics"
-    ]
-};
-
-let selectedSubjectForSyllabus = "";
-
-// Subject card click handler
-document.querySelectorAll('.subject-card').forEach(card => {
-    card.addEventListener('click', function() {
-        // Get subject name from card
-        const subject = this.querySelector('h3').textContent.trim();
-        selectedSubjectForSyllabus = subject;
-        // Show the download button
-        document.getElementById('downloadSyllabusBtn').style.display = 'inline-block';
-    });
-});
-
-// Download Syllabus PDF button handler
-document.getElementById('downloadSyllabusBtn').addEventListener('click', function() {
-    if (!selectedSubjectForSyllabus || !syllabusData[selectedSubjectForSyllabus]) {
-        alert("Please select a subject first.");
-        return;
-    }
-    const doc = new jsPDF();
-    doc.setFontSize(18);
-    doc.text(`${selectedSubjectForSyllabus} Syllabus`, 15, 20);
-    doc.setFontSize(12);
-    syllabusData[selectedSubjectForSyllabus].forEach((item, idx) => {
-        doc.text(item, 15, 35 + idx * 10);
-    });
-    doc.save(`${selectedSubjectForSyllabus}_Syllabus.pdf`);
-});
     </script>
 </body>
 </html>

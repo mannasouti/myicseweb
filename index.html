@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMSB ICSE Xpert - Class 10 Learning Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #4a6da7;
+            --secondary: #7b9acc;
+            --accent: #f47a60;
+            --light: #f5f7fa;
+            --dark: #2c3e50;
+            --success: #28a745;
+            --warning: #ffc107;
+        }
+
+        body {
+            background-color: #f0f4f8;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: white;
+            padding: 5px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 8px 20px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        .btn-register {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3') center/cover no-repeat;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .btn-hero {
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 70px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary);
+            font-size: 2.2rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        /* Subjects Section */
+        .subjects {
+            padding: 70px 0;
+            background-color: #f9fafb;
+        }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .subject-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .subject-img {
+            height: 150px;
+            background-color: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .subject-content {
+            padding: 20px;
+        }
+
+        .subject-content h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        /* Whiteboard Section */
+        .whiteboard-section {
+            padding: 70px 0;
+            background: linear-gradient(to right, #eef2f5, #e6ebee);
+        }
+
+        .whiteboard-container {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .whiteboard-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .whiteboard-tools {
+            display: flex;
+            gap: 10px;
+            padding: 15px;
+            background-color: #f0f4f8;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .tool {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: white;
+            border: 1px solid #ddd;
+        }
+
+        .tool.active {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        #whiteboard {
+            width: 100%;
+            height: 400px;
+            background-color: white;
+            cursor: crosshair;
+        }
+
+        /* MCQ Test Section */
+        .mcq-section {
+            padding: 70px 0;
+            background-color: white;
+        }
+
+        .test-container {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .test-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        .question {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .option {
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .option:hover {
+            background-color: #e9f0f7;
+            border-color: var(--secondary);
+        }
+
+        .option.selected {
+            background-color: var(--secondary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .test-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        /* Career Guidance Section */
+        .career-section {
+            padding: 70px 0;
+            background-color: #f9fafb;
+        }
+
+        .career-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .career-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .career-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .career-content {
+            padding: 25px;
+        }
+
+        .career-content h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        /* Dashboard Section */
+        .dashboard {
+            padding: 70px 0;
+            background-color: var(--light);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .stat-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .stat-card h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .study-record {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .record-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group select, .form-group input {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .record-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .record-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr auto;
+            gap: 15px;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .record-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h2 {
+            color: var(--primary);
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .record-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .record-item {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <h1>CMSB ICSE Xpert</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#subjects">Subjects</a></li>
+                    <li><a href="#mcq">MCQ Tests</a></li>
+                    <li><a href="#whiteboard">Whiteboard</a></li>
+                    <li><a href="#career">Career Guidance</a></li>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <button class="btn btn-login" id="loginBtn">Login</button>
+                <button class="btn btn-register" id="registerBtn">Register</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Excel in ICSE Class 10 Board Examinations</h2>
+            <p>A comprehensive learning platform for students of Central Modern School, Baranagar. Access study materials, practice tests, collaborative tools, and career guidance - all in one place.</p>
+            <button class="btn btn-hero">Start Learning Now</button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose Our Platform</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>ICSE Syllabus Aligned</h3>
+                    <p>All content strictly follows the ICSE curriculum for Class 10</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Chapter-wise MCQ Tests</h3>
+                    <p>Practice with hundreds of questions and instant results</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Performance Certificates</h3>
+                    <p>Get recognized for your achievements with shareable certificates</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chalkboard"></i>
+                    </div>
+                    <h3>Interactive Whiteboard</h3>
+                    <p>Collaborate with classmates and explain concepts visually</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section class="dashboard" id="dashboard">
+        <div class="container">
+            <h2 class="section-title">Student Dashboard</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <i class="fas fa-book-open"></i>
+                    <h3>12</h3>
+                    <p>Subjects</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>47</h3>
+                    <p>Tests Completed</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>89%</h3>
+                    <p>Average Score</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>56</h3>
+                    <p>Study Hours</p>
+                </div>
+            </div>
+            
+            <div class="study-record">
+                <h3>Daily Study Record</h3>
+                <div class="record-form">
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject">
+                            <option value="">Select Subject</option>
+                            <option value="physics">Physics</option>
+                            <option value="chemistry">Chemistry</option>
+                            <option value="biology">Biology</option>
+                            <option value="maths">Mathematics</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="chapter">Chapter/Topic</label>
+                        <input type="text" id="chapter" placeholder="Enter chapter or topic">
+                    </div>
+                    <div class="form-group">
+                        <label for="hours">Hours Studied</label>
+                        <input type="number" id="hours" placeholder="Hours" min="0.5" step="0.5">
+                    </div>
+                </div>
+                <button class="btn" style="background: var(--primary); color: white; width: 100%;">Save Study Record</button>
+                
+                <h3 style="margin-top: 30px;">Recent Study Records</h3>
+                <div class="record-list">
+                    <div class="record-item">
+                        <div>Physics</div>
+                        <div>Force, Work, Energy and Power</div>
+                        <div>2 hours</div>
+                        <div>Today</div>
+                    </div>
+                    <div class="record-item">
+                        <div>Mathematics</div>
+                        <div>Quadratic Equations</div>
+                        <div>1.5 hours</div>
+                        <div>Yesterday</div>
+                    </div>
+                    <div class="record-item">
+                        <div>Chemistry</div>
+                        <div>Periodic Table</div>
+                        <div>2 hours</div>
+                        <div>2 days ago</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subjects Section -->
+    <section class="subjects" id="subjects">
+        <div class="container">
+            <h2 class="section-title">Subjects We Cover</h2>
+            <div class="subjects-grid">
+                <div class="subject-card">
+                    <div class="subject-img">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <div class="subject-content">
+                        <h3>Physics</h3>
+                        <p>Force, Work, Energy, Light, Sound, Electricity</p>
+                    </div>
+                </div>
+                <div class="subject-card">
+                    <div class="subject-img">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <div class="subject-content">
+                        <h3>Chemistry</h3>
+                        <p>Periodic Table, Chemical Bonding, Acids, Bases, Salts</p>
+                    </div>
+                </div>
+                <div class="subject-card">
+                    <div class="subject-img">
+                        <i class="fas fa-dna"></i>
+                    </div>
+                    <div class="subject-content">
+                        <h3>Biology</h3>
+                        <p>Cell Structure, Genetics, Human Anatomy, Plant Physiology</p>
+                    </div>
+                </div>
+                <div class="subject-card">
+                    <div class="subject-img">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <div class="subject-content">
+                        <h3>Mathematics</h3>
+                        <p>Algebra, Geometry, Trigonometry, Statistics, Probability</p>
+                    </div>
+                </div>
+                <div class="subject-card">
+                    <div class="subject-img">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <div class="subject-content">
+                        <h3>English</h3>
+                        <p>Literature, Grammar, Composition, Comprehension</p>
+                    </div>
+                </div>
+                <div class="subject-card">
+                    <div class="subject-img">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <div class="subject-content">
+                        <h3>History & Civics</h3>
+                        <p>Indian History, World History, Indian Constitution</p>
+                    </div>
+                </div>
+                <div class="subject-card">
+                    <div class="subject-img">
+                        <i class="fas fa-globe-asia"></i>
+                    </div>
+                    <div class="subject-content">
+                        <h3>Geography</h3>
+                        <p>Maps, Climate, Vegetation, Industries, Resources</p>
+                    </div>
+                </div>
+                <div class="subject-card">
+                    <div class="subject-img">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="subject-content">
+                        <h3>Computer Applications</h3>
+                        <p>Java Programming, HTML, CSS, Computer Fundamentals</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Whiteboard Section -->
+    <section class="whiteboard-section" id="whiteboard">
+        <div class="container">
+            <h2 class="section-title">Collaborative Whiteboard</h2>
+            <div class="whiteboard-container">
+                <div class="whiteboard-header">
+                    <h3>Explain concepts to your classmates</h3>
+                    <button class="btn" style="background: var(--accent); color: white;" id="clearWhiteboard">Clear Canvas</button>
+                </div>
+                <div class="whiteboard-tools">
+                    <div class="tool active" id="pencilTool"><i class="fas fa-pencil-alt"></i></div>
+                    <div class="tool" id="eraserTool"><i class="fas fa-eraser"></i></div>
+                    <div class="tool" id="textTool"><i class="fas fa-text-height"></i></div>
+                    <div class="tool" id="shapeTool"><i class="fas fa-shapes"></i></div>
+                    <div class="tool" id="colorTool"><i class="fas fa-palette"></i></div>
+                </div>
+                <canvas id="whiteboard"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- MCQ Test Section -->
+    <section class="mcq-section" id="mcq">
+        <div class="container">
+            <h2 class="section-title">Practice MCQ Tests</h2>
+            <div class="test-container">
+                <div class="test-header">
+                    <h3>Physics: Force, Work, Energy and Power</h3>
+                    <div class="timer">Time Left: 14:32</div>
+                </div>
+                <div class="question">
+                    <p>1. What is the SI unit of force?</p>
+                </div>
+                <div class="options">
+                    <div class="option">Joule</div>
+                    <div class="option selected">Newton</div>
+                    <div class="option">Watt</div>
+                    <div class="option">Pascal</div>
+                </div>
+                <div class="test-navigation">
+                    <button class="btn" style="background: var(--secondary); color: white;">Previous Question</button>
+                    <button class="btn" style="background: var(--primary); color: white;">Next Question</button>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <button class="btn" style="background: var(--accent); color: white; padding: 12px 30px;">View All Tests</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Guidance Section -->
+    <section class="career-section" id="career">
+        <div class="container">
+            <h2 class="section-title">Career Guidance After 10th</h2>
+            <div class="career-cards">
+                <div class="career-card">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Science Stream">
+                    <div class="career-content">
+                        <h3>Science Stream</h3>
+                        <p>Explore careers in Engineering, Medical, Research, and Technology fields. Learn about JEE, NEET, and other entrance exams.</p>
+                        <button class="btn" style="background: var(--primary); color: white; margin-top: 15px;">Explore Science</button>
+                    </div>
+                </div>
+                <div class="career-card">
+                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Commerce Stream">
+                    <div class="career-content">
+                        <h3>Commerce Stream</h3>
+                        <p>Discover opportunities in CA, CS, Finance, Business Management, and Economics. Learn about CPT, CMA, and other exams.</p>
+                        <button class="btn" style="background: var(--primary); color: white; margin-top: 15px;">Explore Commerce</button>
+                    </div>
+                </div>
+                <div class="career-card">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Arts/Humanities">
+                    <div class="career-content">
+                        <h3>Arts/Humanities Stream</h3>
+                        <p>Explore careers in Law, Psychology, Sociology, Literature, History, and Design. Learn about CLAT, design entrance exams, and more.</p>
+                        <button class="btn" style="background: var(--primary); color: white; margin-top: 15px;">Explore Humanities</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>CMSB ICSE Xpert</h3>
+                    <p>A dedicated platform for ICSE Class 10 students of Central Modern School, Baranagar to excel in their board examinations and beyond.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#subjects">Subjects</a></li>
+                        <li><a href="#mcq">MCQ Tests</a></li>
+                        <li><a href="#whiteboard">Whiteboard</a></li>
+                        <li><a href="#career">Career Guidance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Study Materials</a></li>
+                        <li><a href="#">Sample Papers</a></li>
+                        <li><a href="#">Syllabus</a></li>
+                        <li><a href="#">Exam Schedule</a></li>
+                        <li><a href="#">Important Dates</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Central Modern School, Baranagar, Kolkata</li>
+                        <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+                        <li><i class="fas fa-envelope"></i> info@cmsbicseexpert.edu.in</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 CMSB ICSE Xpert. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Login to Your Account</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form>
+                <div class="form-group">
+                    <label for="loginEmail">Email Address</label>
+                    <input type="email" id="loginEmail" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter your password">
+                </div>
+                <button type="submit" class="btn" style="background: var(--primary); color: white; width: 100%; margin-top: 20px;">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create an Account</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form>
+                <div class="form-group">
+                    <label for="registerName">Full Name</label>
+                    <input type="text" id="registerName" placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email Address</label>
+                    <input type="email" id="registerEmail" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Password</label>
+                    <input type="password" id="registerPassword" placeholder="Create a password">
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" placeholder="Confirm your password">
+                </div>
+                <button type="submit" class="btn" style="background: var(--primary); color: white; width: 100%; margin-top: 20px;">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Authentication Modals
+        const loginBtn = document.getElementById('loginBtn');
+        const registerBtn = document.getElementById('registerBtn');
+        const loginModal = document.getElementById('loginModal');
+        const registerModal = document.getElementById('registerModal');
+        const closeModalButtons = document.querySelectorAll('.close-modal');
+
+        loginBtn.addEventListener('click', () => {
+            loginModal.style.display = 'flex';
+        });
+
+        registerBtn.addEventListener('click', () => {
+            registerModal.style.display = 'flex';
+        });
+
+        closeModalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                loginModal.style.display = 'none';
+                registerModal.style.display = 'none';
+            });
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === loginModal) loginModal.style.display = 'none';
+            if (e.target === registerModal) registerModal.style.display = 'none';
+        });
+
+        // Whiteboard functionality
+        const canvas = document.getElementById('whiteboard');
+        const ctx = canvas.getContext('2d');
+        let isDrawing = false;
+        let lastX = 0;
+        let lastY = 0;
+        
+        // Set canvas size
+        function resizeCanvas() {
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+        }
+        
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+        
+        // Drawing functions
+        function startDrawing(e) {
+            isDrawing = true;
+            [lastX, lastY] = [e.offsetX, e.offsetY];
+        }
+        
+        function draw(e) {
+            if (!isDrawing) return;
+            
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.strokeStyle = '#4a6da7';
+            ctx.lineWidth = 3;
+            ctx.stroke();
+            
+            [lastX, lastY] = [e.offsetX, e.offsetY];
+        }
+        
+        function stopDrawing() {
+            isDrawing = false;
+        }
+        
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseout', stopDrawing);
+        
+        // Clear whiteboard
+        document.getElementById('clearWhiteboard').addEventListener('click', () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        });
+        
+        // Tool selection
+        const tools = document.querySelectorAll('.tool');
+        
+        tools.forEach(tool => {
+            tool.addEventListener('click', () => {
+                tools.forEach(t => t.classList.remove('active'));
+                tool.classList.add('active');
+            });
+        });
+        
+        // MCQ Test functionality
+        const options = document.querySelectorAll('.option');
+        
+        options.forEach(option => {
+            option.addEventListener('click', () => {
+                options.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+            });
+        });
+
+        // Study record form
+        const studyForm = document.querySelector('.record-form');
+        const recordList = document.querySelector('.record-list');
+        
+        studyForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const subject = document.getElementById('subject').value;
+            const chapter = document.getElementById('chapter').value;
+            const hours = document.getElementById('hours').value;
+            
+            if (subject && chapter && hours) {
+                const newRecord = document.createElement('div');
+                newRecord.classList.add('record-item');
+                newRecord.innerHTML = `
+                    <div>${subject.charAt(0).toUpperCase() + subject.slice(1)}</div>
+                    <div>${chapter}</div>
+                    <div>${hours} hours</div>
+                    <div>Just now</div>
+                `;
+                
+                recordList.prepend(newRecord);
+                
+                // Reset form
+                document.getElementById('subject').value = '';
+                document.getElementById('chapter').value = '';
+                document.getElementById('hours').value = '';
+            }
+        });
+    </script>
+</body>
+</html>
